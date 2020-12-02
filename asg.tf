@@ -9,7 +9,7 @@ resource "aws_launch_configuration" "launch_configuration" {
   instance_type = "t2.micro"
   user_data_base64 = base64encode(local.user_data)
   security_groups = [module.security_group.this_security_group_id]
-  # key_name = "id_rsa.pub"
+  key_name = "id_rsa.pub"
 }
 
 module "asg" {
