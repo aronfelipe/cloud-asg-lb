@@ -9,7 +9,8 @@ resource "aws_launch_configuration" "launch_configuration" {
   instance_type = "t2.micro"
   user_data_base64 = base64encode(local.user_data)
   security_groups = [module.security_group.this_security_group_id]
-  key_name = aws_key_pair.aron-key
+  key_name = "deployer"
+  depends_on = [module.key_pair]
 }
 
 module "asg" {
